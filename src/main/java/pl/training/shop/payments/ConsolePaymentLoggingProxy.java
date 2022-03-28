@@ -5,7 +5,7 @@ import lombok.extern.java.Log;
 
 @Log
 @RequiredArgsConstructor
-public class PaymentProcessorLoggingProxy implements PaymentService {
+public class ConsolePaymentLoggingProxy implements PaymentService {
 
     private static final String LOG_FORMAT = "A new payment of %s has been initiated";
 

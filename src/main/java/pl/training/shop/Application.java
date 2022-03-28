@@ -2,9 +2,10 @@ package pl.training.shop;
 
 import lombok.extern.java.Log;
 import org.javamoney.moneta.FastMoney;
+import pl.training.shop.commons.SystemTimeService;
 import pl.training.shop.payments.*;
 
-import static pl.training.shop.payments.Money.DEFAULT_CURRENCY_UNIT;
+import static pl.training.shop.commons.Money.DEFAULT_CURRENCY_UNIT;
 
 @Log
 public class Application {
@@ -13,7 +14,7 @@ public class Application {
         var paymentIdGenerator = new UUIDPaymentIdGenerator();
         var timeService = new SystemTimeService();
         var paymentService = new PaymentProcessor(paymentIdGenerator, timeService);
-        return new PaymentProcessorLoggingProxy(paymentService);
+        return new ConsolePaymentLoggingProxy(paymentService);
     }
 
     public static void main(String[] args) {
