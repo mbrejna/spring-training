@@ -1,13 +1,17 @@
 package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+import pl.training.shop.commons.TimeService;
 
+@Component
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
     private final PaymentIdGenerator paymentIdGenerator;
     private final TimeService timeService;
 
+    @LogPayments
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         return Payment.builder()
