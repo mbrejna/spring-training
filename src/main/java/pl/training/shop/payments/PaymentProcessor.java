@@ -1,7 +1,9 @@
 package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
+import pl.training.shop.commons.aop.Measure;
 import pl.training.shop.commons.TimeService;
+import pl.training.shop.commons.aop.Retry;
 
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
@@ -10,7 +12,9 @@ public class PaymentProcessor implements PaymentService {
     private final TimeService timeService;
     private final PaymentRepository paymentRepository;
 
-    @LogPayments
+    @Retry
+/*    @Measure
+    @LogPayments*/
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var payment = Payment.builder()
@@ -19,7 +23,8 @@ public class PaymentProcessor implements PaymentService {
                 .timestamp(timeService.getTimestamp())
                 .status(PaymentStatus.STARTED)
                 .build();
-        return paymentRepository.save(payment);
+        //return paymentRepository.save(payment);
+        throw new RuntimeException();
     }
 
 }

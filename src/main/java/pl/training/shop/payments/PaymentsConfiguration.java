@@ -1,7 +1,5 @@
 package pl.training.shop.payments;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -30,12 +28,12 @@ public class PaymentsConfiguration {
     }
 
     @Bean
-    public PaymentProcessor paymentProcessor(/*@Qualifier("uuid")*/ PaymentIdGenerator paymentIdGenerator, TimeService timeService, PaymentRepository paymentRepository) {
+    public PaymentProcessor paymentProcessor(PaymentIdGenerator paymentIdGenerator, TimeService timeService, PaymentRepository paymentRepository) {
         return new PaymentProcessor(paymentIdGenerator, timeService, paymentRepository);
     }
 
     @Scope(SCOPE_PROTOTYPE)
-    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Bean
     public ConsolePaymentLogger paymentLogger() {
         return new ConsolePaymentLogger();
     }
