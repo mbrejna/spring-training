@@ -1,13 +1,11 @@
 package pl.training.shop.payments;
 
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-@Repository
 public class HashSetPaymentRepository implements PaymentRepository {
 
     @Setter
