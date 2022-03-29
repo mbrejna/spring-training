@@ -1,9 +1,8 @@
 package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
-import pl.training.shop.commons.aop.Measure;
+import pl.training.shop.commons.aop.Atomic;
 import pl.training.shop.commons.time.TimeService;
-import pl.training.shop.commons.aop.Retry;
 import pl.training.shop.payments.ports.PaymentRepository;
 import pl.training.shop.payments.ports.PaymentService;
 
@@ -14,9 +13,7 @@ public class PaymentProcessor implements PaymentService {
     private final TimeService timeService;
     private final PaymentRepository paymentRepository;
 
-    @Retry
-    @Measure
-    @LogPayments
+    @Atomic
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var payment = Payment.builder()
