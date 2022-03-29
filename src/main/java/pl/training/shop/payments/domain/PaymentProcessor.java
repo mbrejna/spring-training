@@ -2,7 +2,7 @@ package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import pl.training.shop.commons.aop.Atomic;
-import pl.training.shop.commons.time.TimeService;
+import pl.training.shop.time.TimeService;
 import pl.training.shop.payments.ports.PaymentRepository;
 import pl.training.shop.payments.ports.PaymentService;
 
