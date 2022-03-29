@@ -2,7 +2,7 @@ package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
 import pl.training.shop.commons.aop.Measure;
-import pl.training.shop.commons.TimeService;
+import pl.training.shop.time.TimeService;
 import pl.training.shop.commons.aop.Retry;
 
 @RequiredArgsConstructor
