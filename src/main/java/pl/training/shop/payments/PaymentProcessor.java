@@ -13,8 +13,8 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentRepository paymentRepository;
 
     @Retry
-/*    @Measure
-    @LogPayments*/
+    @Measure
+    @LogPayments
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var payment = Payment.builder()
@@ -23,8 +23,7 @@ public class PaymentProcessor implements PaymentService {
                 .timestamp(timeService.getTimestamp())
                 .status(PaymentStatus.STARTED)
                 .build();
-        //return paymentRepository.save(payment);
-        throw new RuntimeException();
+        return paymentRepository.save(payment);
     }
 
 }
