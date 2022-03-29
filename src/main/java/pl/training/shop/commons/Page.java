@@ -1,4 +1,11 @@
 package pl.training.shop.commons;
 
-public record Page(int size, int number) {
+import lombok.Value;
+
+@Value
+public class Page {
+
+    int size;
+    int number;
+
 }
