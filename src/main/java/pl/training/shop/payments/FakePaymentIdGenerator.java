@@ -1,7 +1,5 @@
 package pl.training.shop.payments;
 
-import pl.training.shop.commons.Generator;
-
 @Generator("fake")
 public class FakePaymentIdGenerator implements PaymentIdGenerator {
 
