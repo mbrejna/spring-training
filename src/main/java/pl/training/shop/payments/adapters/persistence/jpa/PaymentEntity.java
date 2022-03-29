@@ -5,12 +5,9 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-@NamedQuery(name = PaymentEntity.GET_BY_STATUS, query = "select p from Payment p where p.status = :status")
-@NamedQuery(name = PaymentEntity.COUNT_BY_STATUS, query = "select count(p.id) from Payment p where p.status = :status")
 @Entity(name = "Payment")
 @EqualsAndHashCode(of = "id")
 @Data
