@@ -3,6 +3,7 @@ package pl.training.shop.payments.adapters.persistence.jpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
@@ -13,7 +14,7 @@ import pl.training.shop.payments.ports.PaymentRepository;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Transactional
+@Transactional(propagation = Propagation.MANDATORY)
 @Component
 @RequiredArgsConstructor
 public class JpaPaymentRepositoryAdapter implements PaymentRepository {
