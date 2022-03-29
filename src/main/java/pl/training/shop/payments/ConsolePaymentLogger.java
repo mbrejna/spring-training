@@ -10,11 +10,9 @@ import org.aspectj.lang.annotation.Aspect;
 @RequiredArgsConstructor
 public class ConsolePaymentLogger {
 
-    private static final String LOG_FORMAT = "A new payment of %s has been initiated";
-
     @AfterReturning(value = "@annotation(LogPayments)", returning = "payment")
     private void log(Payment payment) {
-        log.info(String.format(LOG_FORMAT, payment.getValue()));
+        log.info(String.format("A new payment of %s has been initiated", payment.getValue()));
     }
 
     public void init() {

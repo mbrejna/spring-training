@@ -1,7 +1,6 @@
-package pl.training.shop.commons;
+package pl.training.shop.payments;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
