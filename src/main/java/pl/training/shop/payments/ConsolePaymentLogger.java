@@ -5,21 +5,15 @@ import lombok.extern.java.Log;
 
 @Log
 @RequiredArgsConstructor
-public class ConsolePaymentLoggingProxy implements PaymentService {
-
-    private static final String LOG_FORMAT = "A new payment of %s has been initiated";
+public class ConsolePaymentLogger implements PaymentService {
 
     private final PaymentService paymentService;
 
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var payment = paymentService.process(paymentRequest);
-        log.info(createLogEntry(payment));
+        log.info(String.format("A new payment of %s has been initiated", payment.getValue()));
         return payment;
-    }
-
-    private String createLogEntry(Payment payment) {
-        return String.format(LOG_FORMAT, payment.getValue());
     }
 
 }
