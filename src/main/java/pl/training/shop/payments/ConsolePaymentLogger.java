@@ -7,10 +7,8 @@ import lombok.extern.java.Log;
 @RequiredArgsConstructor
 public class ConsolePaymentLogger {
 
-    private static final String LOG_FORMAT = "A new payment of %s has been initiated";
-
-    private void log(Payment payment) {
-        log.info(String.format(LOG_FORMAT, payment.getValue()));
+    public void log(Payment payment) {
+        log.info(String.format("A new payment of %s has been initiated", payment.getValue()));
     }
 
     public void init() {

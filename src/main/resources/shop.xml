@@ -9,6 +9,6 @@
     <aop:aspectj-autoproxy/>
     <context:component-scan base-package="pl.training.shop"/>
 
-    <bean id="timeService" class="pl.training.shop.commons.SystemTimeService"/>
+    <bean id="timeService" class="pl.training.shop.time.SystemTimeService"/>
 
 </beans>
