@@ -2,7 +2,7 @@ package pl.training.shop.payments;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.training.shop.commons.TimeService;
+import pl.training.shop.time.TimeService;
 
 @Component
 @RequiredArgsConstructor
