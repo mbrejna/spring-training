@@ -1,9 +1,9 @@
 package pl.training.shop.payments.domain;
 
 import pl.training.shop.commons.time.TimeService;
-import pl.training.shop.payments.api.PaymentRepository;
-import pl.training.shop.payments.api.PaymentService;
-import pl.training.shop.payments.api.PaymentServiceFactory;
+import pl.training.shop.payments.ports.PaymentRepository;
+import pl.training.shop.payments.ports.PaymentService;
+import pl.training.shop.payments.ports.PaymentServiceFactory;
 
 public class DefaultPaymentServiceFactory implements PaymentServiceFactory {
 

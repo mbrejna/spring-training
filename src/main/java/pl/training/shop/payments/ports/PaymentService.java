@@ -1,4 +1,4 @@
-package pl.training.shop.payments.api;
+package pl.training.shop.payments.ports;
 
 import pl.training.shop.payments.domain.PaymentRequest;
 import pl.training.shop.payments.domain.Payment;

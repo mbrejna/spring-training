@@ -4,7 +4,7 @@ import lombok.extern.java.Log;
 import org.javamoney.moneta.FastMoney;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.training.shop.payments.domain.PaymentRequest;
-import pl.training.shop.payments.api.PaymentService;
+import pl.training.shop.payments.ports.PaymentService;
 
 import static pl.training.shop.commons.Money.DEFAULT_CURRENCY_UNIT;
 

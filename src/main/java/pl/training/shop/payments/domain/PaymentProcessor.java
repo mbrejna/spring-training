@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import pl.training.shop.commons.aop.Measure;
 import pl.training.shop.commons.time.TimeService;
 import pl.training.shop.commons.aop.Retry;
-import pl.training.shop.payments.api.PaymentRepository;
-import pl.training.shop.payments.api.PaymentService;
+import pl.training.shop.payments.ports.PaymentRepository;
+import pl.training.shop.payments.ports.PaymentService;
 
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {

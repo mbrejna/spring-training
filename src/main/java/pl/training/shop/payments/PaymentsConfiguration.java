@@ -9,9 +9,9 @@ import pl.training.shop.payments.adapters.logging.ConsolePaymentLogger;
 import pl.training.shop.payments.adapters.persistence.HashSetPaymentRepository;
 import pl.training.shop.payments.adapters.events.PaymentEventListener;
 import pl.training.shop.payments.adapters.events.PaymentEventPublisher;
-import pl.training.shop.payments.api.PaymentRepository;
-import pl.training.shop.payments.api.PaymentService;
-import pl.training.shop.payments.api.PaymentServiceFactory;
+import pl.training.shop.payments.ports.PaymentRepository;
+import pl.training.shop.payments.ports.PaymentService;
+import pl.training.shop.payments.ports.PaymentServiceFactory;
 import pl.training.shop.payments.domain.DefaultPaymentServiceFactory;
 
 import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
