@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import pl.training.shop.commons.time.SystemTimeService;
 import pl.training.shop.commons.time.TimeService;
 
@@ -17,6 +18,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @PropertySource("classpath:jdbc.properties")
+@EnableTransactionManagement
 @EnableAspectJAutoProxy
 @ComponentScan
 @Configuration
