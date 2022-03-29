@@ -1,8 +1,8 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.domain;
 
 import java.util.UUID;
 
-public class UUIDPaymentIdGenerator implements PaymentIdGenerator {
+class UUIDPaymentIdGenerator implements PaymentIdGenerator {
 
     @Override
     public String getNext() {

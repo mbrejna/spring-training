@@ -1,10 +1,12 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.adapters.logging;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
+import pl.training.shop.payments.domain.Payment;
+import pl.training.shop.payments.domain.PaymentRequest;
 
 @Order(10_000)
 @Aspect
@@ -14,7 +16,7 @@ public class ConsolePaymentLogger {
 
     // @Pointcut("execution(* pl.training.shop.*.PaymentProcessor.pr*(..))")
     // @Pointcut("bean(paymentProcessor)")
-    @Pointcut("@annotation(LogPayments)")
+    @Pointcut("@annotation(pl.training.shop.payments.domain.LogPayments)")
     void process() {
     }
 

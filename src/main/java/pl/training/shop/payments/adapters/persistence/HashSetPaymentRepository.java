@@ -1,6 +1,8 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.adapters.persistence;
 
 import lombok.Setter;
+import pl.training.shop.payments.domain.Payment;
+import pl.training.shop.payments.api.PaymentRepository;
 
 import java.util.HashSet;
 import java.util.Optional;

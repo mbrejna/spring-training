@@ -1,4 +1,6 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.api;
+
+import pl.training.shop.payments.domain.Payment;
 
 import java.util.Optional;
 

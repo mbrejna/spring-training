@@ -1,12 +1,14 @@
-package pl.training.shop.payments;
+package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import pl.training.shop.commons.aop.Measure;
 import pl.training.shop.commons.TimeService;
 import pl.training.shop.commons.aop.Retry;
+import pl.training.shop.payments.api.PaymentRepository;
+import pl.training.shop.payments.api.PaymentService;
 
 @RequiredArgsConstructor
-public class PaymentProcessor implements PaymentService {
+class PaymentProcessor implements PaymentService {
 
     private final PaymentIdGenerator paymentIdGenerator;
     private final TimeService timeService;
