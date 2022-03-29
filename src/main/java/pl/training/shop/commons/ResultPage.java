@@ -11,4 +11,8 @@ public class ResultPage<T> {
     int pageNumber;
     int totalPages;
 
+    public <OT> ResultPage<OT> with(List<OT> data) {
+        return new ResultPage<>(data, pageNumber, totalPages);
+    }
+
 }
