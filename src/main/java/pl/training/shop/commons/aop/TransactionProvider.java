@@ -21,13 +21,13 @@ public class TransactionProvider {
 
     @Around("@annotation(pl.training.shop.commons.aop.Atomic)")
     public Object runWithTransaction(ProceedingJoinPoint joinPoint) throws Throwable {
-        var tx = platformTransactionManager.getTransaction(transactionDefinition);
+        var transaction = platformTransactionManager.getTransaction(transactionDefinition);
         try {
             var result = joinPoint.proceed();
-            platformTransactionManager.commit(tx);
+            platformTransactionManager.commit(transaction);
             return result;
         } catch (Throwable throwable) {
-            tx.setRollbackOnly();
+            transaction.setRollbackOnly();
             throw throwable;
         }
     }
