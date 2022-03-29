@@ -12,7 +12,6 @@ import pl.training.shop.payments.domain.PaymentStatus;
 import pl.training.shop.payments.ports.PaymentRepository;
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Transactional(propagation = Propagation.MANDATORY)
 @Component
@@ -39,7 +38,7 @@ public class JpaPaymentRepositoryAdapter implements PaymentRepository {
     public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
         var pageRequest = PageRequest.of(page.getNumber(), page.getSize());
         var result = paymentRepository.getByStatus(status.name(), pageRequest);
-        var data = result.getContent().stream().map(paymentMapper::toDomain).collect(Collectors.toList());
+        var data = result.getContent().stream().map(paymentMapper::toDomain).toList();
         return new ResultPage<>(data, page.getNumber(), result.getTotalPages());
     }
 
