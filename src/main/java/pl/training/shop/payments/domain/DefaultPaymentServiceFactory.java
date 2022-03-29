@@ -1,6 +1,6 @@
 package pl.training.shop.payments.domain;
 
-import pl.training.shop.commons.TimeService;
+import pl.training.shop.commons.time.TimeService;
 import pl.training.shop.payments.api.PaymentRepository;
 import pl.training.shop.payments.api.PaymentService;
 import pl.training.shop.payments.api.PaymentServiceFactory;

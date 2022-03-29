@@ -2,7 +2,7 @@ package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import pl.training.shop.commons.aop.Measure;
-import pl.training.shop.commons.TimeService;
+import pl.training.shop.commons.time.TimeService;
 import pl.training.shop.commons.aop.Retry;
 import pl.training.shop.payments.api.PaymentRepository;
 import pl.training.shop.payments.api.PaymentService;

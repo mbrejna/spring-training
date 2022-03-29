@@ -1,6 +1,6 @@
 package pl.training.shop.payments.api;
 
-import pl.training.shop.commons.TimeService;
+import pl.training.shop.commons.time.TimeService;
 
 public interface PaymentServiceFactory {
 

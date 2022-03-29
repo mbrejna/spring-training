@@ -9,8 +9,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
-import pl.training.shop.commons.SystemTimeService;
-import pl.training.shop.commons.TimeService;
+import pl.training.shop.commons.time.SystemTimeService;
+import pl.training.shop.commons.time.TimeService;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
