@@ -8,7 +8,7 @@ import pl.training.shop.payments.api.PaymentRepository;
 import pl.training.shop.payments.api.PaymentService;
 
 @RequiredArgsConstructor
-class PaymentProcessor implements PaymentService {
+public class PaymentProcessor implements PaymentService {
 
     private final PaymentIdGenerator paymentIdGenerator;
     private final TimeService timeService;
