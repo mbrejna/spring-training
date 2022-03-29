@@ -28,7 +28,7 @@ public class PaymentsConfiguration {
     }
 
     @Bean
-    public PaymentProcessor paymentProcessor(PaymentIdGenerator paymentIdGenerator, TimeService timeService, PaymentRepository paymentRepository) {
+    public PaymentService paymentService(PaymentIdGenerator paymentIdGenerator, TimeService timeService, PaymentRepository paymentRepository) {
         return new PaymentProcessor(paymentIdGenerator, timeService, paymentRepository);
     }
 
