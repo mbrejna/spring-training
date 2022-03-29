@@ -7,7 +7,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
 
 @Aspect
@@ -17,8 +16,9 @@ public class Repeater {
 
     private final int DEFAULT_ATTEMPTS_COUNT = 3;
 
-    @Around("@annotation(Retry)")
-    public Object tryExecute(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    // @Around("@annotation(Retry)")
+    @Around("@annotation(retry)")
+    public Object tryExecute(ProceedingJoinPoint proceedingJoinPoint, Retry retry) throws Throwable {
         var attempts = getAttemptsCount(proceedingJoinPoint);
         var currentAttempt = 0;
         Throwable throwable;
