@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import pl.training.shop.commons.time.TimeService;
+import pl.training.shop.time.TimeService;
 import pl.training.shop.payments.adapters.events.PaymentEventListener;
 import pl.training.shop.payments.adapters.events.PaymentEventPublisher;
 import pl.training.shop.payments.adapters.logging.ConsolePaymentLogger;

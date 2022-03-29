@@ -1,6 +1,6 @@
 package pl.training.shop.payments.ports;
 
-import pl.training.shop.commons.time.TimeService;
+import pl.training.shop.time.TimeService;
 
 public interface PaymentServiceFactory {
 

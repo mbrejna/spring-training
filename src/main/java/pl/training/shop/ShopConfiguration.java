@@ -10,8 +10,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import pl.training.shop.commons.time.SystemTimeService;
-import pl.training.shop.commons.time.TimeService;
+import pl.training.shop.time.SystemTimeService;
+import pl.training.shop.time.TimeService;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
