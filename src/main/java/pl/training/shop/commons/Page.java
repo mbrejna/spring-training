@@ -5,8 +5,8 @@ import lombok.Value;
 @Value
 public class Page {
 
-    int size;
     int number;
+    int size;
 
     public int getOffset() {
         return number * size;

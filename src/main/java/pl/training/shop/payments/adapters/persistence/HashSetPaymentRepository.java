@@ -36,7 +36,7 @@ public class HashSetPaymentRepository implements PaymentRepository {
         var data = payments.stream()
                 .filter(payment -> payment.getStatus().equals(status))
                 .collect(toList());
-        var totalPages = (int) Math.ceil((double) data.size() / page.getSize());
+        var totalPages = (long) Math.ceil((double) data.size() / page.getSize());
         return new ResultPage<>(data, page.getNumber(), totalPages);
     }
 

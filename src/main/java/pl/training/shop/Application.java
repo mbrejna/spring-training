@@ -2,6 +2,7 @@ package pl.training.shop;
 
 import lombok.extern.java.Log;
 import org.javamoney.moneta.FastMoney;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import pl.training.shop.payments.domain.PaymentRequest;
 import pl.training.shop.payments.ports.PaymentService;

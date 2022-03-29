@@ -31,7 +31,10 @@ public class JpaPaymentRepository {
                 .setFirstResult(page.getOffset())
                 .setMaxResults(page.getSize())
                 .getResultList();
-        return new ResultPage<>(result, page.getNumber(), -1);
+        var count = entityManager.createNamedQuery(PaymentEntity.COUNT_BY_STATUS, Long.class)
+                .setParameter("status", status)
+                .getSingleResult();
+        return new ResultPage<>(result, page.getNumber(), (count / page.getSize()) + 1);
     }
 
 }
