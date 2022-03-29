@@ -37,7 +37,7 @@ public class JpaPaymentRepositoryAdapter implements PaymentRepository {
     @Override
     public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
         var result = paymentRepository.getByStatus(status.name(), page);
-        var data = result.getData().stream().map(paymentMapper::toDomain).collect(Collectors.toList());
+        var data = result.getData().stream().map(paymentMapper::toDomain).toList();
         return result.with(data);
     }
 
