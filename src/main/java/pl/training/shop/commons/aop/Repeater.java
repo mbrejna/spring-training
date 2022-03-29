@@ -13,7 +13,6 @@ public class Repeater {
 
     @Around("@annotation(retry)")
     public Object tryExecute(ProceedingJoinPoint proceedingJoinPoint, Retry retry) throws Throwable {
-        var attempts = retry.attempts();
         var currentAttempt = 0;
         Throwable throwable;
         do {
@@ -24,7 +23,7 @@ public class Repeater {
             } catch (Throwable exception) {
                 throwable = exception;
             }
-        } while (currentAttempt < attempts);
+        } while (currentAttempt < retry.attempts());
         throw throwable;
     }
 
