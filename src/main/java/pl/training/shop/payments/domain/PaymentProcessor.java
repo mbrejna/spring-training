@@ -25,4 +25,10 @@ public class PaymentProcessor implements PaymentService {
         return paymentRepository.save(payment);
     }
 
+    @Override
+    public Payment getById(String id) {
+        return paymentRepository.getById(id)
+                .orElseThrow(PaymentNotFoundException::new);
+    }
+
 }
