@@ -6,7 +6,6 @@ import pl.training.shop.payments.domain.Payment;
 import pl.training.shop.payments.domain.PaymentRequest;
 import pl.training.shop.payments.ports.PaymentService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,9 +19,7 @@ public class PaymentServiceDecorator {
     }
 
     public List<Payment> process(List<PaymentRequest> paymentRequests) {
-        var result = new ArrayList<Payment>();
-        paymentRequests.forEach(paymentRequest -> result.add(process(paymentRequest)));
-        return result;
+        return paymentRequests.stream().map(this::process).toList();
     }
 
 }
