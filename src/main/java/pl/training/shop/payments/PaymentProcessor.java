@@ -13,7 +13,7 @@ public class PaymentProcessor implements PaymentService {
     public Payment process(PaymentRequest paymentRequest) {
         return Payment.builder()
                 .id(paymentIdGenerator.getNext())
-                .value(paymentRequest.getMoney())
+                .value(paymentRequest.getValue())
                 .timestamp(timeService.getTimestamp())
                 .status(PaymentStatus.STARTED)
                 .build();
