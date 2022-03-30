@@ -1,6 +1,8 @@
 package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
+import pl.training.shop.commons.Page;
+import pl.training.shop.commons.ResultPage;
 import pl.training.shop.commons.aop.Atomic;
 import pl.training.shop.time.TimeService;
 import pl.training.shop.payments.ports.PaymentRepository;
@@ -29,6 +31,11 @@ public class PaymentProcessor implements PaymentService {
     public Payment getById(String id) {
         return paymentRepository.getById(id)
                 .orElseThrow(PaymentNotFoundException::new);
+    }
+
+    @Override
+    public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
+        return paymentRepository.getByStatus(status, page);
     }
 
 }
