@@ -25,4 +25,10 @@ import pl.training.shop.payments.ports.PaymentService;
         return paymentRepository.save(payment);
     }
 
+    @Override
+    public Payment getById(String id) {
+        return paymentRepository.getById(id)
+                .orElseThrow(PaymentNotFoundException::new);
+    }
+
 }

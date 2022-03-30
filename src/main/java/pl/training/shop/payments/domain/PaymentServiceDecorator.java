@@ -1,9 +1,7 @@
-package pl.training.shop.payments.adapters;
+package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.training.shop.payments.domain.Payment;
-import pl.training.shop.payments.domain.PaymentRequest;
 import pl.training.shop.payments.ports.PaymentService;
 
 import java.util.List;
@@ -20,6 +18,10 @@ public class PaymentServiceDecorator {
 
     public List<Payment> process(List<PaymentRequest> paymentRequests) {
         return paymentRequests.stream().map(this::process).toList();
+    }
+
+    public Payment getById(String id) {
+        return paymentService.getById(id);
     }
 
 }

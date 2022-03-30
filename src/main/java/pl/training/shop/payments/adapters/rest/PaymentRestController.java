@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.training.shop.commons.web.UriBuilder;
-import pl.training.shop.payments.adapters.PaymentServiceDecorator;
+import pl.training.shop.payments.domain.PaymentServiceDecorator;
 
 @RequestMapping("api/payments")
 @RestController
@@ -14,13 +14,20 @@ public class PaymentRestController {
     private final PaymentServiceDecorator paymentService;
     private final RestPaymentMapper paymentMapper;
 
-   @PostMapping
-   public ResponseEntity<PaymentDto> process(@RequestBody PaymentRequestDto paymentRequestDto) {
-       var paymentRequest = paymentMapper.toDomain(paymentRequestDto);
-       var payment = paymentService.process(paymentRequest);
-       var paymentDto = paymentMapper.toDto(payment);
-       var locationUri = UriBuilder.requestUriWithId(paymentDto.id);
-       return ResponseEntity.created(locationUri).body(paymentDto);
-   }
+    @PostMapping
+    public ResponseEntity<PaymentDto> process(@RequestBody PaymentRequestDto paymentRequestDto) {
+        var paymentRequest = paymentMapper.toDomain(paymentRequestDto);
+        var payment = paymentService.process(paymentRequest);
+        var paymentDto = paymentMapper.toDto(payment);
+        var locationUri = UriBuilder.requestUriWithId(paymentDto.id);
+        return ResponseEntity.created(locationUri).body(paymentDto);
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<PaymentDto> getById(@PathVariable String id) {
+        var payment = paymentService.getById(id);
+        var paymentDto = paymentMapper.toDto(payment);
+        return ResponseEntity.ok(paymentDto);
+    }
 
 }

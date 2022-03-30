@@ -12,6 +12,7 @@ import pl.training.shop.payments.domain.PaymentStatus;
 public interface RestPaymentMapper {
 
     @Mapping(source = "requestId", target = "id")
+    @Mapping(source = "value", target = "money")
     PaymentRequest toDomain(PaymentRequestDto paymentRequest);
 
     PaymentDto toDto(Payment payment);
