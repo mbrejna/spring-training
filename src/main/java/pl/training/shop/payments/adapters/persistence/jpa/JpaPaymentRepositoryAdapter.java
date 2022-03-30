@@ -41,4 +41,6 @@ public class JpaPaymentRepositoryAdapter implements PaymentRepository {
         return new ResultPage<>(data, page.getNumber(), result.getTotalPages());
     }
 
+
+
 }

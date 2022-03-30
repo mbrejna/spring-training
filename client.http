@@ -12,3 +12,9 @@ Content-Type: application/json
 GET http://localhost:8080/api/payments/48907f10-f309-4865-84eb-8c8e03325dac
 Accept: application/json
 Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/payments/confirmed
+Accept: application/json
+Content-Type: application/json
