@@ -1,14 +1,12 @@
 package pl.training.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
 import pl.training.shop.payments.ports.PaymentService;
 
 import java.util.List;
 
-@Component
 @RequiredArgsConstructor
 public class PaymentServiceDecorator implements PaymentService {
 

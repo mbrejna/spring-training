@@ -2,23 +2,25 @@ package pl.training.shop.payments.adapters.rest;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.training.shop.commons.Extended;
 import pl.training.shop.commons.Page;
 import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.commons.web.UriBuilder;
-import pl.training.shop.payments.domain.PaymentServiceDecorator;
 import pl.training.shop.payments.domain.PaymentStatus;
+import pl.training.shop.payments.ports.PaymentService;
 
 @RequestMapping("api/payments")
 @RestController
 @RequiredArgsConstructor
 public class PaymentRestController {
 
-    private final PaymentServiceDecorator paymentService;
+    private final PaymentService paymentService;
     private final RestPaymentMapper paymentMapper;
 
     @PostMapping
-    public ResponseEntity<PaymentDto> process(@RequestBody PaymentRequestDto paymentRequestDto) {
+    public ResponseEntity<PaymentDto> process(@Validated(Extended.class) /*@Valid*/ @RequestBody PaymentRequestDto paymentRequestDto) {
         var paymentRequest = paymentMapper.toDomain(paymentRequestDto);
         var payment = paymentService.process(paymentRequest);
         var paymentDto = paymentMapper.toDto(payment);

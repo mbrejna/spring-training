@@ -4,7 +4,7 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ValueMapping;
-import pl.training.shop.commons.FastMoneyMapper;
+import pl.training.shop.commons.money.FastMoneyMapper;
 import pl.training.shop.commons.ResultPage;
 import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.payments.domain.Payment;

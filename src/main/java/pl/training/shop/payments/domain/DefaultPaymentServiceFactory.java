@@ -11,7 +11,7 @@ public class DefaultPaymentServiceFactory implements PaymentServiceFactory {
 
     @Override
     public PaymentService create(TimeService timeService, PaymentRepository paymentRepository) {
-        return new PaymentProcessor(PAYMENT_ID_GENERATOR, timeService, paymentRepository);
+        return new PaymentServiceDecorator(new PaymentProcessor(PAYMENT_ID_GENERATOR, timeService, paymentRepository));
     }
 
 }
