@@ -3,7 +3,9 @@ package pl.training.shop.payments;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
+import pl.training.shop.payments.domain.PaymentServiceDecorator;
 import pl.training.shop.time.TimeService;
 import pl.training.shop.payments.adapters.events.PaymentEventListener;
 import pl.training.shop.payments.adapters.events.PaymentEventPublisher;
@@ -23,6 +25,12 @@ public class PaymentsConfiguration {
     @Bean
     public PaymentService paymentService(TimeService timeService, PaymentRepository paymentRepository) {
         return PAYMENT_SERVICE_FACTORY.create(timeService, paymentRepository);
+    }
+
+    @Primary
+    @Bean
+    public PaymentService paymentServiceDecorator(PaymentService paymentService) {
+        return new PaymentServiceDecorator(paymentService);
     }
 
     @Scope(SCOPE_PROTOTYPE)

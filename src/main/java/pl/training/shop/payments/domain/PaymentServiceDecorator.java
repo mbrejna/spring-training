@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class PaymentServiceDecorator {
+public class PaymentServiceDecorator implements PaymentService {
 
     private final PaymentService paymentService;
 
