@@ -20,7 +20,7 @@ import pl.training.shop.payments.ports.PaymentService;
     public Payment process(PaymentRequest paymentRequest) {
         var payment = Payment.builder()
                 .id(paymentIdGenerator.getNext())
-                .value(paymentRequest.getMoney())
+                .value(paymentRequest.getValue())
                 .timestamp(timeService.getTimestamp())
                 .status(PaymentStatus.CONFIRMED)
                 .build();
