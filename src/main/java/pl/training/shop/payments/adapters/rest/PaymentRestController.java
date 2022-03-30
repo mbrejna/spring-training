@@ -1,11 +1,14 @@
 package pl.training.shop.payments.adapters.rest;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.training.shop.commons.Page;
+import pl.training.shop.commons.web.ExceptionDto;
 import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.commons.web.UriBuilder;
+import pl.training.shop.payments.domain.PaymentNotFoundException;
 import pl.training.shop.payments.domain.PaymentServiceDecorator;
 import pl.training.shop.payments.domain.PaymentStatus;
 
@@ -42,5 +45,11 @@ public class PaymentRestController {
         var resultPageDto = paymentMapper.toDto(resultPage);
         return ResponseEntity.ok(resultPageDto);
     }
+
+    /*@ExceptionHandler(PaymentNotFoundException.class)
+    public ResponseEntity<ExceptionDto> onPaymentNotFound(PaymentNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ExceptionDto("Payment not found"));
+    }*/
 
 }
