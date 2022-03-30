@@ -11,7 +11,6 @@ import pl.training.shop.payments.domain.PaymentStatus;
 import pl.training.shop.payments.ports.PaymentRepository;
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Transactional(propagation = Propagation.MANDATORY)
 @Component
