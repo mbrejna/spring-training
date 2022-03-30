@@ -4,8 +4,8 @@ import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ValueMapping;
-import pl.training.shop.commons.money.FastMoneyMapper;
 import pl.training.shop.commons.ResultPage;
+import pl.training.shop.commons.money.FastMoneyMapper;
 import pl.training.shop.commons.web.ResultPageDto;
 import pl.training.shop.payments.domain.Payment;
 import pl.training.shop.payments.domain.PaymentRequest;
@@ -17,7 +17,6 @@ import java.util.List;
 public interface RestPaymentMapper {
 
     @Mapping(source = "requestId", target = "id")
-    @Mapping(source = "value", target = "money")
     PaymentRequest toDomain(PaymentRequestDto paymentRequest);
 
     PaymentDto toDto(Payment payment);
