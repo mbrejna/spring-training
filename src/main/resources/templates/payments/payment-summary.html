@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+</head>
+<body>
+<h1>Payment summary</h1>
+<div>
+    Payment:
+    <span th:text="${payment.value}">, </span>
+    <span th:text="${payment.status}"></span>
+</div>
+<a href="/index.html">Main menu</a>
+</body>
+</html>
