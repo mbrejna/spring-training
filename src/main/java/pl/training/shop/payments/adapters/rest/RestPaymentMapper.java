@@ -17,7 +17,7 @@ import java.util.List;
 public interface RestPaymentMapper {
 
     @Mapping(source = "requestId", target = "id")
-    PaymentRequest toDomain(PaymentRequestDto paymentRequest);
+    PaymentRequest toDomain(PaymentRequestDto dto);
 
     PaymentDto toDto(Payment payment);
 
