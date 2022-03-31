@@ -1,4 +1,4 @@
-package pl.training;
+package pl.training.examples;
 
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;

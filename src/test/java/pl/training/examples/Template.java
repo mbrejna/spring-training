@@ -1,4 +1,4 @@
-package pl.training;
+package pl.training.examples;
 
 import java.util.Map;
 import java.util.regex.MatchResult;

@@ -1,4 +1,4 @@
-package pl.training;
+package pl.training.examples;
 
 import org.junit.jupiter.api.Test;
 
