@@ -34,13 +34,7 @@ class PaymentRestControllerTest {
     @BeforeEach
     void beforeEach() {
         when(paymentService.getById(TEST_ID)).thenReturn(TEST_PAYMENT);
-        when(mapper.toDto(any(Payment.class))).then(invocation -> {
-            var payment = invocation.getArgument(0, Payment.class);
-            var dto = new PaymentDto();
-            dto.setId(payment.getId());
-            dto.setValue(payment.getValue().toString());
-            return dto;
-        });
+        when(mapper.toDto(any(Payment.class))).then(MAP_TO_DTO);
     }
 
     @Test
