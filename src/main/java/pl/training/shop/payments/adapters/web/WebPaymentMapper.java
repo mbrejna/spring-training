@@ -10,7 +10,7 @@ import pl.training.shop.payments.domain.PaymentStatus;
 @Mapper(componentModel = "spring", uses = FastMoneyMapper.class)
 public interface WebPaymentMapper {
 
-    PaymentRequest toDomain(PaymentRequestViewModel paymentRequestViewModel);
+    PaymentRequest toDomain(PaymentRequestViewModel vm);
 
     PaymentViewModel toViewModel(Payment payment);
 
