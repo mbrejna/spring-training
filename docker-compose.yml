@@ -18,3 +18,15 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=training@sages.pl
       - PGADMIN_DEFAULT_PASSWORD=admin
+  keycloak:
+    image: jboss/keycloak:16.1.1
+    environment:
+      KEYCLOAK_USER: "admin"
+      KEYCLOAK_PASSWORD: "admin"
+      DB_VENDOR: "POSTGRES"
+      DB_ADDR: "database"
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_DATABASE: "shop"
+    ports:
+      - "8100:8080"

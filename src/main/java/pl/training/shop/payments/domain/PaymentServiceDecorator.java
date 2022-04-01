@@ -8,7 +8,7 @@ import pl.training.shop.payments.ports.PaymentService;
 import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@RolesAllowed("ROLE_ADMIN")
+@RolesAllowed("ROLE_SUPER_ADMIN")
 @RequiredArgsConstructor
 public class PaymentServiceDecorator implements PaymentService {
 
