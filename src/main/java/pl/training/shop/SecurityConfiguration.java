@@ -1,11 +1,12 @@
 package pl.training.shop;
 
-import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @KeycloakConfiguration
 public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
+
 
     private static final String[] AUTH_LIST = {
             "/v3/api-docs",
@@ -63,8 +65,18 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
         super.configure(http);
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .mvcMatchers("/api/payments/**").hasRole("ADMIN")
-                .mvcMatchers("/api/**").hasRole("USER");
+                //.mvcMatchers("/api/payments/**").hasRole("ADMIN")
+                //.mvcMatchers("/api/**").hasRole("USER");
+                .mvcMatchers("/**").authenticated()
+                .accessDecisionManager(accessDecisionManager());
+    }
+
+    @Bean
+    public AccessDecisionManager accessDecisionManager() {
+        return new AffirmativeBased(List.of(new DynamicAccessDecisionVoter()));
     }
 
 }
+
+
+
