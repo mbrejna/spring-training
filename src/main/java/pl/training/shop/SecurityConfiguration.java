@@ -1,6 +1,5 @@
 package pl.training.shop;
 
-import org.keycloak.adapters.KeycloakConfigResolver;
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
@@ -22,10 +21,11 @@ import java.util.List;
 @KeycloakConfiguration
 public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
 
-    @Override
-    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-    }
+    private static final String[] AUTH_LIST = {
+            "/v3/api-docs",
+            "/swagger-resources/**",
+            "/swagger-ui/**"
+    };
 
     @Autowired
     public void authenticationManager(AuthenticationManagerBuilder authenticationManagerBuilder) {
@@ -34,14 +34,19 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
         authenticationManagerBuilder.authenticationProvider(keycloakProvider);
     }
 
+    @Override
+    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+    }
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         var configuration = new CorsConfiguration();
-        configuration.setAllowedHeaders(List.of("*"));
-        configuration.setAllowedMethods(List.of("*"));
         configuration.addAllowedOrigin("http://localhost:4200");
-        configuration.addExposedHeader(HttpHeaders.LOCATION);
+        configuration.setAllowedMethods(List.of("*"));
+        configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
+        configuration.addExposedHeader(HttpHeaders.LOCATION);
         var source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -49,12 +54,11 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .cors()
-                .and()
+        super.configure(http);
+        http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .mvcMatchers("/api/payments/**").hasRole("ADMIN")
-                .mvcMatchers("/**").permitAll();
+                .mvcMatchers("/api/**").hasRole("USER");
     }
 
 }
