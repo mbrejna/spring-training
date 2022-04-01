@@ -40,6 +40,7 @@ public class ShopConfiguration implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("index").setViewName("index");
         registry.addViewController("index.html").setViewName("index");
+        registry.addViewController("403.html").setViewName("403");
     }
 
 }

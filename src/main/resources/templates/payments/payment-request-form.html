@@ -13,6 +13,7 @@
         <p th:if="${#fields.hasErrors('value')}"
            th:text="${#strings.listJoin(#fields.errors('value'), ', ')}"></p>
     </div>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <button type="submit">Send</button>
 </form>
 </body>
