@@ -5,10 +5,8 @@ import pl.training.shop.commons.Page;
 import pl.training.shop.commons.ResultPage;
 import pl.training.shop.payments.ports.PaymentService;
 
-import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
-@RolesAllowed("ROLE_SUPER_ADMIN")
 @RequiredArgsConstructor
 public class PaymentServiceDecorator implements PaymentService {
 

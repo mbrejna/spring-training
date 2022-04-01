@@ -1,6 +1,9 @@
+// @no-cookie-jar
+
 POST http://localhost:8080/api/payments
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 {
   "requestId": 1,
@@ -22,17 +25,17 @@ Content-Type: application/json
 ###
 
 // @no-cookie-jar
-POST http://localhost:8100/auth/realms/cloud/protocol/openid-connect/token
+POST http://localhost:8100/auth/realms/shop/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-client_id=cloud-service&username=jan&password=123&grant_type=password
+client_id=shop-rest&username=jan&password=123&grant_type=password
 
 > {%client.global.set("auth_token", response.body.access_token);%}
 
 ###
 
 // @no-cookie-jar
-POST http://localhost:8100/auth/realms/cloud/protocol/openid-connect/token
+POST http://localhost:8100/auth/realms/shop/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
-client_id=cloud-service&grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlMDNhY2U2Mi00MTQ5LTQwMzItODViYy01YjEzMjg1OTJlYTAifQ.eyJleHAiOjE2NDg4MDkwNDIsImlhdCI6MTY0ODgwNzI0MiwianRpIjoiNDZmNGNlZjctZjkyNi00MGE3LTkxMDUtODMxODM0NjE0YWI1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwL2F1dGgvcmVhbG1zL2Nsb3VkIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwL2F1dGgvcmVhbG1zL2Nsb3VkIiwic3ViIjoiZThjOGQ5YWQtNWYyMy00MzNkLWE1MTItMjEzZTU2NTE1ZTZiIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImNsb3VkLXNlcnZpY2UiLCJzZXNzaW9uX3N0YXRlIjoiN2NmYjc3NDMtYjg5MC00ODFiLTliZjgtYzJkZTNmMTRkN2JhIiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiN2NmYjc3NDMtYjg5MC00ODFiLTliZjgtYzJkZTNmMTRkN2JhIn0.TSY9cZgoeiILeGulJTJYBBl_6biB99dEl0gFmJUoDCQ
+client_id=shop-rest&grant_type=refresh_token&refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlMDNhY2U2Mi00MTQ5LTQwMzItODViYy01YjEzMjg1OTJlYTAifQ.eyJleHAiOjE2NDg4MDkwNDIsImlhdCI6MTY0ODgwNzI0MiwianRpIjoiNDZmNGNlZjctZjkyNi00MGE3LTkxMDUtODMxODM0NjE0YWI1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwL2F1dGgvcmVhbG1zL2Nsb3VkIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo4MTAwL2F1dGgvcmVhbG1zL2Nsb3VkIiwic3ViIjoiZThjOGQ5YWQtNWYyMy00MzNkLWE1MTItMjEzZTU2NTE1ZTZiIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImNsb3VkLXNlcnZpY2UiLCJzZXNzaW9uX3N0YXRlIjoiN2NmYjc3NDMtYjg5MC00ODFiLTliZjgtYzJkZTNmMTRkN2JhIiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiN2NmYjc3NDMtYjg5MC00ODFiLTliZjgtYzJkZTNmMTRkN2JhIn0.TSY9cZgoeiILeGulJTJYBBl_6biB99dEl0gFmJUoDCQ
