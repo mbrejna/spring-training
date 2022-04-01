@@ -10,3 +10,8 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher # springfox bug
+keycloak:
+  realm: cloud
+  resource: cloud-service
+  auth-server-url: http://localhost:8100/auth
+  public-client: true

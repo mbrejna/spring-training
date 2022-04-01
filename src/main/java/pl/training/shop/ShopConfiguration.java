@@ -1,9 +1,10 @@
 package pl.training.shop;
 
+import org.keycloak.adapters.KeycloakConfigResolver;
+import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pl.training.shop.time.SystemTimeService;
@@ -28,13 +29,6 @@ public class ShopConfiguration implements WebMvcConfigurer {
         return new SystemTimeService();
     }
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-                .allowedMethods("*")
-                .allowedHeaders("*")
-                .allowedOrigins("http://localhost:4200");
-    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -42,6 +36,11 @@ public class ShopConfiguration implements WebMvcConfigurer {
         registry.addViewController("index.html").setViewName("index");
         registry.addViewController("login.html").setViewName("login-form");
         registry.addViewController("403.html").setViewName("403");
+    }
+
+    @Bean
+    public KeycloakConfigResolver keycloakConfigResolver() {
+        return new KeycloakSpringBootConfigResolver();
     }
 
 }
