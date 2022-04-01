@@ -36,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     AccessDecisionManager accessDecisionManager; // przeprowadza autoryzację(AffirmativeBased, ConsensusBased, UnanimousBased)
-        AccessDecisionVoter voter; //
+        AccessDecisionVoter voter; // podejmuje indywidualną decyzję
 
     Authentication authentication; // reprezentuje stan po uwierzytelneiniu (principal, role)
     SecurityContext securityContext; // trzyma/udostępnia Authentication
@@ -88,7 +88,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout.html"))
                     .logoutSuccessUrl("/index.html")
             .and()
-                .exceptionHandling().accessDeniedPage("/403.html");
+                .exceptionHandling()
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    var path = request.getContextPath();
+                    response.sendRedirect(path + "/403.html");
+                });
     }
 
 }
